@@ -1,0 +1,52 @@
+Mysql Commands
+[the commands do not need to be in capital letters but its is a convention to use them as such]
+Enter mysql: sudo mysql -u root -p
+
+Databases
+Display Databases: SHOW DATABASES;    
+Create Databases: CREATE DATABASE NAME_OF_THE_DATABASE;
+Delete Databases: DROP DAATABASE 'NAME_OF_THE_DATABASE'; 			- the quotations are required
+
+Tables
+Display Tables: SHOW TABLES;
+Create Tables: CREATE TABLE TABLE_NAME (column_name column_datatype);
+Delete Databases: DROP TABLE TABLE_NAME;
+
+Display information
+-Display details of the table: DESCRIBE TABLE_NAME;
+-Display information within the columns: SHOW COLUMNS FROM TABLE_NAME;
+-Display information of the table: SELECT * FROM TABLE_NAME;
+-Display specific category of info: SELECT * FROM TABLE_NAME WHERE COLUMN(PARAMETTER); 	e.g. SELECT * FROM Web_based WHERE (Creation_Date(NOW() - --					   Creation_Date) < 2;
+-Display specific category of info: SELECT * FROM TABLE_NAME WHERE COLUMN(PARAMETTER); 	e.g. SELECT * FROM Web_based WHERE (Creation_Date(NOW()-C					   reation_Date) < 2 GOUP BY Game_ID;
+-To limit the outputs : LIMIT NUMBER;
+-SELECT field1, field2, fieldn FROM TABLE_NAME1, TABLE_NAME2, TABLE_NAMEn WHERE field1 LIKE condition 1 [AND[OR]] codition2
+-SELECT field_name FROM TABLE_NAME WHERE field_name REGEXP 'character to be found';
+
+
+Adding information
+-Inseting information: INSERT INTO TABLE_NAME (field1, field2, ...fieldn) VALUES (value1, value2, ...valuen);
+# when inserting string input it within quotaions, along with date and time;
+-Updatong information: UPDATE TABLE_NAME SET field1 = new-value1 , field2 = new-value2 [WHERE CLAUSE] e.g. WHERE Game_ID = 2;
+
+Exporting Information
+OUTFILING INTO A TSV: SELECT * FROM TABLE_NAME INTO OUTFILE 'DIRECTORY OF THE RECEIPIENT TXT FILE'
+OUTFILING INTO A CSV: SELECT * FROM TABLE_NAME INTO OUTFILE 'DIRECTORY OF THE RECEIPIENT TXT FILE' FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES 			     TERMINATED BY '\r\n';
+Mysqldymp into a csv: mysql -u root -p TABLE_NAME > ~/DIRECTORY OF RECEIPIENT TXT FILE/ 
+
+Importing information:
+Importing info into a CSV: LOAD DATA LOCAL INFILE 'DIRECTORY OF THE RECEIPIENT TXT FILE' INTO TAABLE_NAME FIELDS TERMINATED BY ',' ENCLOSED BY '"' LINES 			     						TERMINATED BY '\r\n';
+Mysqldymp from a csv: mysql -u root -p TABLE_NAME < ~/DIRECTORY OF RECEIPIENT TXT FILE/ 
+
+
+
+Searching Operators
+^			Beginning of a string
+$			End of a string
+.			Any single character
+[abc]			Any character listed between the square brackets
+[^abc]			Anz character not listed between the square brackets
+p1|p2|p3		Alternatives; if it matches any one of the patterns 1-3
+*			Zero or more instances of preceding element
++			One or more instances of preceding element
+{n}			n instances of preceding element
+{m,n}			m through n instances of preceding element
